@@ -130,11 +130,11 @@
     right: 0;
     top: 0;
     bottom: 0;
-    width: 48%;
-    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?fm=jpg&q=80&w=1800&auto=format&fit=crop') center / cover no-repeat;
-    opacity: 0.55;
-    mask-image: linear-gradient(to left, black 40%, transparent 90%);
-    -webkit-mask-image: linear-gradient(to left, black 40%, transparent 90%);
+    width: 60%;
+    background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?fm=jpg&q=80&w=1200&auto=format&fit=crop') center / cover no-repeat;
+    opacity: 0.45;
+    mask-image: linear-gradient(to left, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
     pointer-events: none;
   }
 
@@ -143,7 +143,7 @@
     border-radius: 28px;
     padding: 36px 36px 28px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
@@ -246,6 +246,7 @@
   }
   .quote-back:hover { color: var(--pink); }
   .quote-done-text { color: var(--grey-text); max-width: 380px; margin-bottom: 20px; font-size: 0.95rem; }
+  .quote-done-bold { color: var(--grey-text); max-width: 380px; margin-bottom: 20px; font-size: 0.95rem; font-weight: bold; }
   .quote-amount {
     font-family: 'Fraunces', serif;
     font-size: 1.6rem;
@@ -413,7 +414,7 @@
     <div class="hero-intro">
       <span class="hero-eyebrow">Commercial & body corporate cleaning • Gold Coast</span>
       <h1>Don't get it clean.<br>Get it <em>mela clean</em>.</h1>
-      <p class="hero-sub">Offices, retail, and common areas — cleaned properly, booked directly.</p>
+      <p class="hero-sub">...</p>
     </div>
 
     <form class="quote-form" id="quote-form">
@@ -498,16 +499,26 @@
             <textarea id="contact-notes" rows="3" placeholder="Access, preferred days, notes..."></textarea>
           </label>
         </div>
-        <button type="submit" class="quote-next">Send request</button>
+        <button type="submit" class="quote-next">Get quote</button>
       </div>
 
-      <div class="quote-step quote-done" data-step="done">
-        <span class="quote-q-label">Thanks</span>
-        <h2 class="quote-question">Your quote is on its way.</h2>
-        <p class="quote-done-text">We've sent the details to our team. Here's the estimated amount based on what you told us:</p>
+      <!-- Final Quote Step containing the arrow overlay -->
+      <div class="quote-step quote-done" data-step="done" style="position: relative;">
+        <span class="quote-q-label">Estimate</span>
+        <h2 class="quote-question">Your estimated quote</h2>
+        <p class="quote-done-text">Here's the estimated amount based on the details you provided:</p>
         <div class="quote-amount" id="quote-display">—</div>
-        <p class="quote-done-text">We'll confirm the final price and get back to you shortly.</p>
-        <button type="button" class="btn-secondary" data-restart>Start a new quote</button>
+        <p class="quote-done-text">We will be in touch shortly. To reach out to us in the meantime, please email us at <a href="mailto:melaclean@pm.me" style="color: var(--pink); text-decoration: none; font-weight: 600;">melaclean@pm.me</a>.</p>
+        <p class="quote-done-bold" style="line-height: 1.25; margin-bottom: 20px;">
+          Looking at multiple quotes?<br>
+          <span class="quote-done-text" style="display: inline-block; font-weight: normal; margin-top: 4px;">
+            We'll price match. Just send us the quote from another recognised cleaning business, and we'll ---.
+          </span>
+        </p>
+        <button type="button" class="btn-secondary" data-restart style="position: relative; z-index: 11;">Start a new quote</button>
+
+        <!-- Overlay image visible ONLY on this step -->
+        <img src="arrow.png" alt="Overlay graphic" style="position: absolute; top: 0; left: 5%; width: 100%; height: 95%; object-fit: cover; z-index: 10; pointer-events: none;">
       </div>
 
       <div class="quote-back-row">
@@ -518,50 +529,26 @@
 </section>
 
 <section class="photo-banner">
-  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?fm=jpg&q=80&w=2400&auto=format&fit=crop" alt="Bright modern commercial office space" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?fm=jpg&q=80&w=2400&auto=format&fit=crop" alt="Bright and spotless commercial atrium with indoor green planters" loading="lazy">
 </section>
 
 <section class="standard" id="standard">
   <div class="section-inner">
     <span class="section-label">What "mela clean" means</span>
-    <h2 class="section-heading">The places a normal clean leaves behind.</h2>
-    <p class="standard-intro">A surface can look clean from across the room. Mela clean means going back over the bits that get skipped — the grooves, edges, and corners where everything else collects in commercial and common areas.</p>
+    <h2 class="section-heading">The Mela Clean Guarantee</h2>
+    <p class="standard-intro">In Maltese, "mela" is a highly versatile filler word. It means many things, but to us at Mela Clean, it is a guarantee of quality and safety you can count on.<br><br>What that means:</p>
     <div class="standard-grid">
       <div class="standard-item">
-        <span class="standard-label">Tracks & grooves</span>
-        <p>Window and door tracks, shower screen rails in common bathrooms, and other channels that trap grit.</p>
+        <span class="standard-label">Deep & detailed clean</span>
+        <p>Cleaning every nook, cranny, groove, edge, corner, and other areas that are often missed.</p>
       </div>
       <div class="standard-item">
-        <span class="standard-label">Grout & tile lines</span>
-        <p>Bathroom and kitchen grout scrubbed properly in shared spaces, not just wiped over.</p>
+        <span class="standard-label">Eco-friendly</span>
+        <p>We use safe, non-toxic, and eco-friendly products engineered to match the cleaning power of industrial chemicals.</p>
       </div>
       <div class="standard-item">
-        <span class="standard-label">Skirting boards & edges</span>
-        <p>The dust line along floors and behind doors that builds up in high-traffic areas.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Range hoods & vents</span>
-        <p>Filters, exhaust covers, and air vents that collect grease and dust over time.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Switches, handles & rails</span>
-        <p>Light switches, door handles, taps, and railings — high-touch surfaces cleaned properly.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Behind & under</span>
-        <p>Behind toilets, under equipment, and the spots that only get done when something is moved.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Air conditioning</span>
-        <p>Filters and vents wiped and cleared so the air moving through the space is cleaner too.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Windows & sills</span>
-        <p>Glass cleaned streak-free and sills wiped, including tracks where dust collects.</p>
-      </div>
-      <div class="standard-item">
-        <span class="standard-label">Plus everything else</span>
-        <p>Kitchens, bathrooms, floors, and surfaces — the full clean, done properly, every time.</p>
+        <span class="standard-label">Safe & pet-friendly</span>
+        <p>Every product we use assures that your staff, occupants, pets, and the environment will not be harmed.</p>
       </div>
     </div>
   </div>
@@ -570,9 +557,9 @@
 <section class="services" id="services">
   <div class="section-inner">
     <span class="section-label">What we do</span>
-    <h2 class="section-heading">Cleaning that fits how the space is used.</h2>
+    <h2 class="section-heading">Our services</h2>
     <div class="service-row" tabindex="0">
-      <div class="service-name">Regular commercial clean</div>
+      <div class="service-name">Office and commercial</div>
       <div class="service-meta">
         <div class="service-desc">Offices, retail, and workspaces — scheduled visits that keep the space consistently ready.</div>
         <div class="service-price">From $55 / hr</div>
@@ -611,7 +598,7 @@
       <p>Flexible access arrangements (keys, lockbox, or in-person) so it works around your building or tenancy.</p>
     </div>
     <div>
-      <img class="about-photo" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Clean modern commercial interior" loading="lazy">
+      <img class="about-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?fm=jpg&q=80&w=2400&auto=format&fit=crop" alt="Bright modern commercial office space" loading="lazy">
       <ul class="about-list">
         <li><span>Focus</span><span>Commercial & body corporate</span></li>
         <li><span>Areas covered</span><span>Surfers Paradise, Labrador, Southport & surrounds</span></li>
@@ -635,14 +622,8 @@
   <div>Gold Coast, QLD © 2026 Mela Cleaning Services</div>
 </footer>
 
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   (function () {
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
-    }
-
     const form = document.getElementById('quote-form');
     const steps = Array.from(form.querySelectorAll('.quote-step'));
     const dots = Array.from(form.querySelectorAll('.quote-step-dot'));
@@ -728,56 +709,17 @@
       });
     });
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('contact-name').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
-      const suburb = document.getElementById('contact-suburb').value.trim();
-      const notes = document.getElementById('contact-notes').value.trim();
       const size = document.getElementById('size').value;
       const frequency = document.getElementById('frequency').value;
       const service = answers['service-type'] || 'Cleaning';
-      const property = answers['property-type'] || '—';
 
       const estimated = calculateQuote(service, size, frequency);
       quoteDisplay.textContent = `$${estimated} (estimate)`;
 
-      if (typeof emailjs === 'undefined') {
-        console.warn('EmailJS not loaded — showing quote only');
-        showStep('done');
-        return;
-      }
-
-      const commonParams = {
-        from_name: name,
-        from_email: email,
-        suburb: suburb || '—',
-        property_type: property,
-        service_type: service,
-        size: size || '—',
-        frequency: frequency || '—',
-        notes: notes || '—',
-        estimated_quote: `$${estimated}`
-      };
-
-      try {
-        // 1. Email to you (business)
-        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_BUSINESS_TEMPLATE_ID', commonParams);
-
-        // 2. Email to the customer
-        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_CUSTOMER_TEMPLATE_ID', {
-          ...commonParams,
-          to_email: email,          // used if your customer template "To" field is set to {{to_email}}
-          to_name: name
-        });
-
-        showStep('done');
-      } catch (err) {
-        console.error('EmailJS error:', err);
-        alert('Could not send the emails. Please contact us directly at melaclean@pm.me');
-        showStep('done');
-      }
+      showStep('done');
     });
 
     showStep(1);
