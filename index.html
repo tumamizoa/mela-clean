@@ -228,6 +228,33 @@
     outline: none;
     border-color: var(--pink);
   }
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .days-group {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    background: var(--white);
+    cursor: pointer;
+    user-select: none;
+  }
+  .checkbox-label input {
+    accent-color: var(--pink);
+    width: 16px;
+    height: 16px;
+  }
   .quote-next {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
@@ -278,7 +305,8 @@
       -webkit-mask-image: linear-gradient(to top, black 25%, transparent 75%);
     }
     .quote-form { padding: 28px 22px 22px; border-radius: 22px; }
-    .quote-options { grid-template-columns: 1fr; }
+    .quote-options, .checkbox-group { grid-template-columns: 1fr; }
+    .days-group { grid-template-columns: 1fr 1fr; }
     .quote-row { grid-template-columns: 1fr; }
   }
 
@@ -298,7 +326,7 @@
     font-weight: 500;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     max-width: 600px;
-    margin-bottom: 50px;
+    margin-bottom: 28px;
   }
   .photo-banner { padding: 0; line-height: 0; }
   .photo-banner img {
@@ -354,7 +382,7 @@
   }
   .about { border-top: 1px solid var(--grey); }
   .about-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 8vw; align-items: start; }
-  .about p { color: var(--grey-text); margin-bottom: 18px; max-width: 480px; }
+  .about p { color: var(--grey-text); margin-bottom: 18px; max-width: 480px; text-align: justify; }
   .about-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 16px; display: block; margin-bottom: 28px; }
   .about-list { list-style: none; font-family: 'Space Mono', monospace; font-size: 0.9rem; }
   .about-list li { padding: 16px 0; border-bottom: 1px solid var(--grey); display: flex; justify-content: space-between; gap: 20px; }
@@ -420,9 +448,9 @@
   <div class="hero-visual"></div>
   <div class="hero-grid">
     <div class="hero-intro">
-      <span class="hero-eyebrow">Commercial & body corporate cleaning • Gold Coast</span>
-      <h1>Don't get it clean.<br>Get it <em>mela clean</em>.</h1>
-      <p class="hero-sub">...</p>
+      <span class="hero-eyebrow">Gold Coast office & body corporate cleaning</span>
+      <h1>Don't get it clean.<br>Get it <em>mela clean</em>.</h1><br>
+      <!--<p class="hero-eyebrow">Gold Coast office & body corporate cleaning</p>-->
     </div>
 
     <form class="quote-form" id="quote-form">
@@ -432,16 +460,17 @@
         <span class="quote-step-dot" data-step="2"></span>
         <span class="quote-step-dot" data-step="3"></span>
         <span class="quote-step-dot" data-step="4"></span>
+        <span class="quote-step-dot" data-step="5"></span>
       </div>
 
       <div class="quote-step active" data-step="1">
-        <span class="quote-q-label">01 — Property</span>
+        <span class="quote-q-label">01 — Start your free quote</span>
         <h2 class="quote-question">What type of space?</h2>
         <div class="quote-options">
           <button type="button" class="quote-option" data-field="property-type" data-value="Office">Office</button>
+          <!--<button type="button" class="quote-option" data-field="property-type" data-value="Retail / shopfront">Retail / shop</button>-->
           <button type="button" class="quote-option" data-field="property-type" data-value="Body corporate / strata common areas">Body corporate / strata</button>
-          <button type="button" class="quote-option" data-field="property-type" data-value="Retail / shopfront">Retail / shopfront</button>
-          <button type="button" class="quote-option" data-field="property-type" data-value="Warehouse / industrial">Warehouse / industrial</button>
+          <!--<button type="button" class="quote-option" data-field="property-type" data-value="Warehouse / industrial">Warehouse / industrial</button>-->
         </div>
       </div>
 
@@ -449,17 +478,19 @@
         <span class="quote-q-label">02 — Service</span>
         <h2 class="quote-question">What sort of clean?</h2>
         <div class="quote-options">
-          <button type="button" class="quote-option" data-field="service-type" data-value="Regular commercial clean">Regular commercial clean</button>
-          <button type="button" class="quote-option" data-field="service-type" data-value="Body corporate common areas">Body corporate common areas</button>
-          <button type="button" class="quote-option" data-field="service-type" data-value="Once-off deep clean">Once-off deep clean</button>
-          <button type="button" class="quote-option" data-field="service-type" data-value="End of lease / bond clean">End of lease / bond clean</button>
+          <button type="button" class="quote-option" data-field="service-type" data-value="Regular commercial clean">Regular ongoing clean</button>
+          <button type="button" class="quote-option" data-field="service-type" data-value="Once-off deep clean">Once-off clean</button>
+          <button type="button" class="quote-option" data-field="service-type" data-value="Body corporate common areas">Body corporate contract</button>
+          <!--<button type="button" class="quote-option" data-field="service-type" data-value="End of lease / bond clean">Commercial bond clean</button>-->
         </div>
       </div>
 
+      <!-- Step 3: Access, Preferences & Detailed Scope -->
       <div class="quote-step" data-step="3">
-        <span class="quote-q-label">03 — Size</span>
-        <h2 class="quote-question">Approximate size?</h2>
-        <div class="quote-row">
+        <span class="quote-q-label">03 — Details</span>
+        <h2 class="quote-question">Site details</h2>
+        <div class="quote-stack">
+
           <label class="quote-field">
             <span>Size</span>
             <select id="size" required>
@@ -472,6 +503,7 @@
               <option>Not sure / multiple areas</option>
             </select>
           </label>
+
           <label class="quote-field">
             <span>Frequency</span>
             <select id="frequency" required>
@@ -483,12 +515,93 @@
               <option>As required</option>
             </select>
           </label>
+          
+          <span class="quote-q-label" style="margin-bottom: 2px;">Preferred Days (Select all that apply)</span>
+          <div class="checkbox-group days-group">
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Monday"> Monday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Tuesday"> Tuesday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Wednesday"> Wednesday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Thursday"> Thursday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Friday"> Friday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Saturday"> Saturday</label>
+            <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Sunday"> Sunday</label>
+          </div>
+
+          <label class="quote-field" style="margin-bottom: 12px;">
+            <span>Preferred Time of Day</span>
+            <select id="pref-time">
+              <option value="" disabled selected>Select preferred time</option>
+              <option>Morning (Before trading/office hours)</option>
+              <option>During Business Hours</option>
+              <option>Evening / After Hours</option>
+              <option>Flexible / Any time</option>
+            </select>
+          </label>
+
+          <span class="quote-q-label" style="margin-bottom: 2px;">Site Utilities Available</span>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="util-water" value="Water access"> Water access
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="util-power" value="Powerpoint access"> Power access
+            </label>
+          </div>
+
         </div>
         <button type="button" class="quote-next" data-next>Continue</button>
       </div>
 
       <div class="quote-step" data-step="4">
-        <span class="quote-q-label">04 — Contact</span>
+        <span class="quote-q-label">04 — Services Included</span>
+        <h2 class="quote-question">Standard services and inclusions</h2>
+        <div class="quote-stack">
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+                Floor cleaning & care
+            </label>
+            <label class="checkbox-label">
+                Dusting & wiping
+            </label>
+            <label class="checkbox-label">
+                Bathroom & kitchen cleaning
+            </label>
+            <label class="checkbox-label">
+                Waste handling
+            </label>
+          </div>
+          <p>Standard services are included on all sites when available.<br>Click <a href="Cleaning Terms.pdf">here</a> for an extensive explaination of our services.</p><br>
+          Please select the services relevant to your space:
+          <span class="quote-q-label" style="margin-bottom: 2px;">Tell us about your space</span>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Bathrooms & Amenities"> Bathrooms
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Kitchen & Breakrooms"> Kitchen & breakrooms
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Carpet Vacuuming & Steam Clean"> Carpet steam cleaning
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Internal Glass & Windows"> Low window cleaning
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Pressure cleaning"> Pressure cleaning
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Leaf blowing"> Leaf blowing
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="inclusion" value="Leaf blowing"> Putting out bins
+            </label>
+          </div>
+        </div>
+        <button type="button" class="quote-next" data-next>Continue</button>
+      </div>
+
+      <div class="quote-step" data-step="5">
+        <span class="quote-q-label">05 — Contact</span>
         <h2 class="quote-question">Where should we send the quote?</h2>
         <div class="quote-stack">
           <label class="quote-field">
@@ -505,29 +618,28 @@
           </label>
           <label class="quote-field">
             <span>Anything else?</span>
-            <textarea id="contact-notes" rows="3" placeholder="Access, preferred days, notes..."></textarea>
+            <textarea id="contact-notes" rows="3" placeholder="Any further information or required services?"></textarea>
           </label>
         </div>
         <button type="submit" class="quote-next">Get quote</button>
       </div>
 
-      <!-- Final Quote Step containing the arrow overlay -->
       <div class="quote-step quote-done" data-step="done" style="position: relative;">
         <span class="quote-q-label">Estimate</span>
         <h2 class="quote-question">Your estimated quote</h2>
-        <p class="quote-done-text">Here's the estimated amount based on the details you provided:</p>
+        <p class="quote-done-text">An estimate based on the details you provided:</p>
         <div class="quote-amount" id="quote-display">—</div>
-        <p class="quote-done-text">We will be in touch shortly. To reach out to us in the meantime, please email us at <a href="mailto:melaclean@pm.me" style="color: var(--pink); text-decoration: none; font-weight: 600;">melaclean@pm.me</a>.</p>
+        <p class="quote-done-text">We will be in touch shortly to organise an on-site visit and quotation.</p>
         <p class="quote-done-bold" style="line-height: 1.25; margin-bottom: 20px;">
           Looking at multiple quotes?<br>
           <span class="quote-done-text" style="display: inline-block; font-weight: normal; margin-top: 4px;">
-            We'll price match. Just send us the quote from another recognised cleaning business, and we'll ---.
+            We'll price match. Just send us the quote from another recognised local cleaning business, and we'll gladly match it.<br><br>
+            To reach out to us in the meantime, please email <a href="mailto:melaclean@pm.me" style="color: var(--pink); text-decoration: none; font-weight: 600;">melaclean@pm.me</a>.
           </span>
         </p>
         <button type="button" class="btn-secondary" data-restart style="position: relative; z-index: 11;">Start a new quote</button>
 
-        <!-- Overlay image visible ONLY on this step -->
-        <img src="arrow.png" alt="Overlay graphic" style="position: absolute; top: 0; left: 5%; width: 100%; height: 95%; object-fit: cover; z-index: 10; pointer-events: none;">
+        <img src="arrow.png" alt="Overlay graphic" style="position: absolute; top: 0; left: 15%; width: 100%; height: 75%; object-fit: cover; z-index: 10; pointer-events: none;">
       </div>
 
       <div class="quote-back-row">
@@ -595,8 +707,9 @@
   <div class="section-inner about-inner">
     <div>
       <span class="section-label">About</span>
-      <h2 class="section-heading" style="margin-bottom: 28px;">We are a small, local, family-owned business.</h2>
-      <p>Mela Cleaning is a local Gold Coast business providing cleaning services for commercial tenants, building managers, and body corporate committees. We don't outsource our work, so when you deal with us, you're dealing with locals.</p>
+      <h2 class="section-heading">We are a local husband and wife team.</h2>
+      <p>We started Mela Clean from a desire to build something together. After years working for big companies, we found that they often prioritise volume over attention to detail. We saw that things could be done differently, so we decided to create a service that focused on thorough and consistent cleaning people can actually rely on.</p>
+      <p>We provide cleaning services for office tenants, building managers, and body corporate committees. We don't outsource our work, so when you deal with us, you're dealing with locals.</p>
       <p>Flexible access arrangements (keys, lockbox, or in-person) so it works around your building or workplace.</p>
     </div>
     <div>
@@ -630,6 +743,7 @@
     const dots = Array.from(form.querySelectorAll('.quote-step-dot'));
     const backBtn = form.querySelector('[data-back]');
     const quoteDisplay = document.getElementById('quote-display');
+    const arrowImg = form.querySelector('.quote-done img');
     let currentStep = 1;
     const answers = { 'property-type': '', 'service-type': '' };
 
@@ -652,8 +766,8 @@
         'Weekly': 0.9,
         'Fortnightly': 1,
         'Monthly': 1.1,
-        'One-off': 1,
-        'As required': 1
+        'One-off': 1.2,
+        'As required': 1.2
       };
 
       const base = baseRates[service] || 60;
@@ -672,7 +786,7 @@
         dot.classList.toggle('active', dotStep === stepNum);
         dot.classList.toggle('complete', dotStep < stepNum);
       });
-      backBtn.style.visibility = stepNum > 1 && stepNum <= 4 ? 'visible' : 'hidden';
+      backBtn.style.visibility = stepNum > 1 && stepNum <= 5 ? 'visible' : 'hidden';
       currentStep = stepNum;
     }
 
@@ -688,12 +802,14 @@
 
     form.querySelectorAll('[data-next]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const size = document.getElementById('size');
-        const frequency = document.getElementById('frequency');
-        if (!size.value || !frequency.value) {
-          if (!size.value) size.reportValidity();
-          else frequency.reportValidity();
-          return;
+        if (currentStep === 3) {
+          const size = document.getElementById('size');
+          const frequency = document.getElementById('frequency');
+          if (!size.value || !frequency.value) {
+            if (!size.value) size.reportValidity();
+            else frequency.reportValidity();
+            return;
+          }
         }
         showStep(currentStep + 1);
       });
@@ -706,6 +822,7 @@
         form.reset();
         form.querySelectorAll('.quote-option.selected').forEach(b => b.classList.remove('selected'));
         answers['property-type'] = answers['service-type'] = '';
+        if (arrowImg) arrowImg.style.display = 'block';
         showStep(1);
       });
     });
@@ -717,8 +834,16 @@
       const frequency = document.getElementById('frequency').value;
       const service = answers['service-type'] || 'Cleaning';
 
-      const estimated = calculateQuote(service, size, frequency);
-      quoteDisplay.textContent = `$${estimated} (estimate)`;
+      const pressureCleaningChecked = form.querySelector('input[name="inclusion"][value="Pressure cleaning"]').checked;
+
+      if (pressureCleaningChecked) {
+        quoteDisplay.textContent = 'Estimate pending pressure cleaning quotation.';
+        if (arrowImg) arrowImg.style.display = 'none';
+      } else {
+        const estimated = calculateQuote(service, size, frequency);
+        quoteDisplay.textContent = `$${estimated} / hour (estimate)`;
+        if (arrowImg) arrowImg.style.display = 'block';
+      }
 
       showStep('done');
     });
