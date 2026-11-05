@@ -49,6 +49,20 @@
     font-size: 1.45rem;
   }
   .logo span { color: var(--pink); font-style: italic; }
+  header > a {
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  header > a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: var(--pink);
+    transition: width 0.25s ease;
+  }
+  header > a:hover::after, header > a:focus-visible::after { width: 100%; }
   nav { display: flex; gap: 28px; align-items: center; font-size: 0.95rem; font-weight: 500; }
   .nav-links { display: flex; gap: 32px; }
   nav a { text-decoration: none; position: relative; padding-bottom: 4px; }
@@ -64,12 +78,28 @@
   .nav-cta {
     background: var(--black);
     color: var(--white);
-    padding: 10px 20px;
+    padding: 10px 36px 10px 20px;
     border-radius: 999px;
     font-size: 0.9rem;
     text-decoration: none;
     font-weight: 600;
     transition: background 0.25s ease;
+    position: relative;
+  }
+/*  .nav-cta::after {
+    content: '🌸';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }*/
+  .nav-cta:hover::after, .nav-cta:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
   .nav-cta:hover, .nav-cta:focus-visible { background: var(--pink); }
   @media (max-width: 860px) {
@@ -197,12 +227,28 @@
     font-size: 0.95rem;
     font-weight: 500;
     text-align: left;
-    padding: 14px 16px;
+    padding: 14px 40px 14px 16px;
     border: 1px solid var(--grey);
     border-radius: 12px;
     background: var(--white);
     cursor: pointer;
     transition: border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+  }
+/*  .quote-option::after {
+    content: '🌸';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    font-size: 1.1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }*/
+  .quote-option:hover::after, .quote-option:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
   .quote-option:hover, .quote-option:focus-visible {
     border-color: var(--pink);
@@ -215,7 +261,12 @@
   }
   .quote-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
   .quote-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
-  .quote-field { display: flex; flex-direction: column; gap: 6px; }
+  .quote-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
   .quote-field span { font-size: 0.8rem; font-weight: 600; color: var(--grey-text); }
   .quote-field select, .quote-field input, .quote-field textarea {
     font-family: 'Inter', sans-serif;
@@ -226,10 +277,46 @@
     background: var(--white);
     transition: border-color 0.2s ease;
     resize: vertical;
+    cursor: pointer;
   }
   .quote-field select:focus, .quote-field input:focus, .quote-field textarea:focus {
     outline: none;
     border-color: var(--pink);
+  }
+  .quote-field select {
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b6b6b' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .quote-field select:hover,
+  .quote-field select:focus {
+    border-color: var(--pink);
+  }
+  .quote-field select option:hover,
+  .quote-field select option:focus,
+  .quote-field select option:checked {
+    background: var(--pink);
+    color: var(--white);
+  }
+/*  .quote-field:has(select)::after {
+    content: '🌸';
+    position: absolute;
+    right: 36px;
+    bottom: 11px;
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+    font-size: 1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 2;
+  }*/
+  .quote-field:has(select):hover::after,
+  .quote-field:has(select):focus-within::after {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
   .checkbox-group {
     display: grid;
@@ -265,10 +352,26 @@
     background: var(--black);
     color: var(--white);
     border: none;
-    padding: 14px 28px;
+    padding: 14px 28px 14px 28px;
     border-radius: 999px;
     cursor: pointer;
     transition: background 0.25s ease;
+    position: relative;
+  }
+/*  .quote-next::after {
+    content: '🌸';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    font-size: 1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }*/
+  .quote-next:hover::after, .quote-next:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
   .quote-next:hover, .quote-next:focus-visible { background: var(--pink); }
   .quote-back-row { margin-top: 20px; }
@@ -291,7 +394,7 @@
     margin: 12px 0 16px;
     color: var(--black);
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     .hero { padding: 5vh 5vw 7vh; }
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .hero-intro { padding-top: 0; }
@@ -390,7 +493,14 @@
   .about { border-top: 1px solid var(--grey); }
   .about-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 8vw; align-items: start; }
   .about p { color: var(--grey-text); margin-bottom: 18px; max-width: 480px; text-align: justify; }
-  .about-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 16px; display: block; margin-bottom: 28px; }
+  .about-photo {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto 28px auto;
+  }
   .about-list { list-style: none; font-family: 'Space Mono', monospace; font-size: 0.9rem; }
   .about-list li { padding: 16px 0; border-bottom: 1px solid var(--grey); display: flex; justify-content: space-between; gap: 20px; }
   .about-list li:first-child { border-top: 1px solid var(--grey); }
@@ -402,13 +512,29 @@
   .btn-primary {
     background: var(--black);
     color: var(--white);
-    padding: 16px 34px;
+    padding: 16px 34px 16px 34px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.98rem;
     display: inline-block;
     transition: background 0.25s ease;
+    position: relative;
+  }
+/*  .btn-primary::after {
+    content: '🌸';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    font-size: 1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }*/
+  .btn-primary:hover::after, .btn-primary:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
   .btn-primary:hover { background: var(--pink); }
   .btn-secondary {
@@ -422,6 +548,23 @@
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     transition: border-color 0.25s ease, color 0.25s ease;
+    position: relative;
+    /*padding-right: 24px;*/
+  }
+/*  .btn-secondary::after {
+    content: '🌸';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }*/
+  .btn-secondary:hover::after, .btn-secondary:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
   .btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
   footer {
@@ -440,7 +583,7 @@
 </head>
 <body>
 <header>
-  <div class="logo">mela<span>·</span>clean</div>
+  <a href=""><div class="logo">mela<span>·</span>clean</div></a>
   <nav>
     <div class="nav-links">
       <a href="#standard">Our standard</a>
@@ -456,7 +599,6 @@
     <div class="hero-intro">
       <span class="hero-eyebrow">Gold Coast office & body corporate cleaning</span>
       <h1>Don't get it clean.<br>Get it <em>mela clean</em>.</h1><br>
-      <!--<p class="hero-eyebrow">Gold Coast office & body corporate cleaning</p>-->
     </div>
     <form class="quote-form" id="quote-form">
       <h3 class="quote-form-title">Get a quote today</h3>
@@ -472,9 +614,7 @@
         <h2 class="quote-question">What type of space?</h2>
         <div class="quote-options">
           <button type="button" class="quote-option" data-field="property-type" data-value="Office">Office</button>
-          <!--<button type="button" class="quote-option" data-field="property-type" data-value="Retail / shopfront">Retail / shop</button>-->
           <button type="button" class="quote-option" data-field="property-type" data-value="Body corporate / strata">Body corporate / strata</button>
-          <!--<button type="button" class="quote-option" data-field="property-type" data-value="Warehouse / industrial">Warehouse / industrial</button>-->
         </div>
       </div>
       <div class="quote-step" data-step="2">
@@ -482,12 +622,9 @@
         <h2 class="quote-question">What sort of clean?</h2>
         <div class="quote-options">
           <button type="button" class="quote-option" data-field="service-type" data-value="Regular ongoing clean">Regular ongoing clean</button>
-          <!--<button type="button" class="quote-option" data-field="service-type" data-value="Body corporate contract">Body corporate contract</button>-->
           <button type="button" class="quote-option" data-field="service-type" data-value="Once-off clean">Once-off clean</button>
-          <!--<button type="button" class="quote-option" data-field="service-type" data-value="End of lease / bond clean">Commercial bond clean</button>-->
         </div>
       </div>
-      <!-- Step 3: Access, Preferences & Detailed Scope -->
       <div class="quote-step" data-step="3">
         <span class="quote-q-label">03 — Details</span>
         <h2 class="quote-question">Site details</h2>
@@ -501,6 +638,7 @@
               <option>250–500 m²</option>
               <option>500–1000 m²</option>
               <option>1000+ m²</option>
+              <option>Unsure (on-site quote required)</option>
             </select>
           </label>
           <label class="quote-field">
@@ -514,7 +652,6 @@
               <option>As required</option>
             </select>
           </label>
-          
           <span class="quote-q-label" style="margin-bottom: 2px;">Preferred Days (Select all that apply)</span>
           <div class="checkbox-group days-group">
             <label class="checkbox-label"><input type="checkbox" name="pref-days" value="Monday"> Monday</label>
@@ -552,18 +689,10 @@
         <h2 class="quote-question">Standard services and inclusions</h2>
         <div class="quote-stack">
           <div class="checkbox-group">
-            <label class="checkbox-label">
-                Floor cleaning & care
-            </label>
-            <label class="checkbox-label">
-                Dusting & wiping
-            </label>
-            <label class="checkbox-label">
-                Bathroom & kitchen cleaning
-            </label>
-            <label class="checkbox-label">
-                Waste handling
-            </label>
+            <label class="checkbox-label">Floor cleaning & care</label>
+            <label class="checkbox-label">Dusting & wiping</label>
+            <label class="checkbox-label">Bathroom & kitchen cleaning</label>
+            <label class="checkbox-label">Waste handling</label>
           </div>
           <p>Standard services are included on all sites when available.<br>Click <a href="Cleaning Terms.pdf">here</a> for an extensive explaination of our services.</p><br>
           Please select the services relevant to your space:
@@ -619,10 +748,9 @@
       </div>
       <div class="quote-step quote-done" data-step="done" style="position: relative;">
         <span class="quote-q-label">Estimate</span>
-        <h2 class="quote-question">Your estimated quote</h2>
-        <p class="quote-done-text">An estimate based on the details you provided:</p>
+        <h2 class="quote-question">Here is your estimated quote</h2>
         <div class="quote-amount" id="quote-display">—</div>
-        <p class="quote-done-text">We will be in touch shortly to organise an on-site visit and quotation.</p>
+        <p class="quote-done-text">We will be in touch shortly to organise an on-site visit and final quotation.</p>
         <p class="quote-done-bold" style="line-height: 1.25; margin-bottom: 20px;">
           Looking at multiple quotes?<br>
           <span class="quote-done-text" style="display: inline-block; font-weight: normal; margin-top: 4px;">
@@ -631,7 +759,7 @@
           </span>
         </p>
         <button type="button" class="btn-secondary" data-restart style="position: relative; z-index: 11;">Start a new quote</button>
-        <img src="arrow.png" alt="Overlay graphic" style="position: absolute; top: 0; left: 15%; width: 100%; height: 75%; object-fit: cover; z-index: 10; pointer-events: none;">
+        <!--<img src="arrow.png" alt="Overlay graphic" style="position: absolute; top: 0; left: 15%; width: 100%; height: 62%; object-fit: cover; z-index: 10; pointer-events: none;">-->
       </div>
       <div class="quote-back-row">
         <button type="button" class="quote-back" data-back style="visibility:hidden;">← Back</button>
@@ -671,30 +799,37 @@
     <div class="service-row" tabindex="0">
       <div class="service-name">Office cleaning</div>
       <div class="service-meta">
-        <div class="service-desc">On-going or once-off cleaning of offices, retail spaces, and workspaces.</div>
-        <div class="service-price">From $45 / hr</div>
+        <div class="service-desc">Regular or once-off cleaning of offices, retail spaces, and other workspaces.</div>
+        <div class="service-price">From $48 / hr</div>
       </div>
     </div>
     <div class="service-row" tabindex="0">
       <div class="service-name">Body corporate / facilities cleaning</div>
       <div class="service-meta">
-        <div class="service-desc">Ongoing cleaning of common areas for body corporates and facility managers—covering lobbies, corridors, stairwells, pool areas, and other facilities.</div>
+        <div class="service-desc">Regular cleaning of common areas for body corporate committees and facility managers.</div>
         <div class="service-price">From $55 / hr</div>
       </div>
     </div>
-    <!--<div class="service-row" tabindex="0">
-      <div class="service-name">Building manager cleaning</div>
+    <div class="service-row" tabindex="0">
+      <div class="service-name">Window Cleaning</div>
       <div class="service-meta">
-        <div class="service-desc">On-going cleaning of body corporate managed common areas such as lobbies, corridors, stairwells, pool areas, and facilities.</div>
+        <div class="service-desc">Regular or once-off cleaning of internal windows plus ground and first storey external cleaning.</div>
         <div class="service-price">Quote on request</div>
       </div>
     </div>
     <div class="service-row" tabindex="0">
-      <div class="service-name">End of lease / bond clean</div>
+      <div class="service-name">Bin Cleaning</div>
       <div class="service-meta">
-        <div class="service-desc">Commercial bond-back ready clean with a checklist matched to requirements.</div>
+        <div class="service-desc">Regular or once-off cleaning of council bins and private commercial bins.</div>
+        <div class="service-price">From $15 / bin</div>
+      </div>
+    </div>
+    <div class="service-row" tabindex="0">
+      <div class="service-name">Pressure Washing</div>
+      <div class="service-meta">
+        <div class="service-desc">Once-off pressure cleaning for driveways, walls, and sides of buildings.</div>
         <div class="service-price">Quote on request</div>
-      </div>-->
+      </div>
     </div>
   </div>
 </section>
@@ -708,11 +843,11 @@
       <p>Flexible access arrangements (keys, lockbox, or in-person) so it works around your building or workplace.</p>
     </div>
     <div>
-      <img class="about-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?fm=jpg&q=80&w=2400&auto=format&fit=crop" alt="Bright modern commercial office space" loading="lazy">
+      <img class="about-photo" src="gc.png" alt="Map of the Gold Coast with Central Gold Coast area" loading="lazy">
       <ul class="about-list">
         <li><span>Focus</span><span>Commercial & body corporate</span></li>
         <li><span>Areas covered</span><span>Central Gold Coast & surrounds</span></li>
-        <li><span>Availability</span><span>Weekdays & weekends</span></li>
+        <!--<li><span>Availability</span><span>Weekdays & weekends</span></li>-->
         <li><span>Contact us</span><span>Website form or via email below</span></li>
       </ul>
     </div>
@@ -726,23 +861,30 @@
 </section>
 <footer>
   <div class="logo">mela<span>·</span>clean</div>
-  <div>Gold Coast, QLD © 2026 Mela Cleaning Services</div>
+  <div>© 2026 Mela Clean</div>
 </footer>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   (function () {
+    // Replace these with your EmailJS credentials
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
+    }
     const form = document.getElementById('quote-form');
     const steps = Array.from(form.querySelectorAll('.quote-step'));
     const dots = Array.from(form.querySelectorAll('.quote-step-dot'));
     const backBtn = form.querySelector('[data-back]');
     const quoteDisplay = document.getElementById('quote-display');
     const arrowImg = form.querySelector('.quote-done img');
+    const formTitle = form.querySelector('.quote-form-title');
     let currentStep = 1;
     const answers = { 'property-type': '', 'service-type': '' };
     function calculateQuote(propertyType, serviceType, size, frequency) {
       const baseRates = {
-        'Office': 45,
+        'Office': 50,
         'Body corporate / strata': 55,
-        'Once-off clean': 50
+        'Once-off clean': 60
       };
       const sizeMultipliers = {
         'Under 100 m²': 1.1,
@@ -758,12 +900,15 @@
         'One-off': 1.2,
         'As required': 1.2
       };
-      // Use property type for base rate; fall back to service type (for once-off) or 60
       const base = baseRates[propertyType] || baseRates[serviceType] || 60;
       const sizeMult = sizeMultipliers[size] || 2;
       const freqMult = freqMultipliers[frequency] || 1;
       let amount = base * sizeMult * freqMult;
       amount = Math.round(amount / 5) * 5;
+      if (amount == 50)
+      {
+        amount = 48;
+      }
       return amount;
     }
     function showStep(stepNum) {
@@ -774,6 +919,9 @@
         dot.classList.toggle('complete', dotStep < stepNum);
       });
       backBtn.style.visibility = stepNum > 1 && stepNum <= 5 ? 'visible' : 'hidden';
+      if (formTitle) {
+        formTitle.textContent = stepNum === 'done' ? 'Your enquiry has been sent' : 'Get a quote today';
+      }
       currentStep = stepNum;
     }
     form.querySelectorAll('.quote-option').forEach(btn => {
@@ -809,20 +957,60 @@
         showStep(1);
       });
     });
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const size = document.getElementById('size').value;
       const frequency = document.getElementById('frequency').value;
       const service = answers['service-type'] || 'Cleaning';
       const property = answers['property-type'] || '';
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const suburb = document.getElementById('contact-suburb').value.trim();
+      const notes = document.getElementById('contact-notes').value.trim();
+      const prefTime = document.getElementById('pref-time').value || '—';
+      const prefDays = Array.from(form.querySelectorAll('input[name="pref-days"]:checked'))
+        .map(cb => cb.value).join(', ') || '—';
+      const utilities = [];
+      if (document.getElementById('util-water').checked) utilities.push('Water access');
+      if (document.getElementById('util-power').checked) utilities.push('Power access');
+      const utilitiesText = utilities.join(', ') || '—';
+      const inclusions = Array.from(form.querySelectorAll('input[name="inclusion"]:checked'))
+        .map(cb => cb.value).join(', ') || '—';
+      const unsureChecked = size === 'Unsure (on-site quote required)';
       const pressureCleaningChecked = form.querySelector('input[name="inclusion"][value="Pressure cleaning"]').checked;
-      if (pressureCleaningChecked) {
-        quoteDisplay.textContent = 'Estimate pending pressure cleaning quotation.';
+      const carpetCleaningChecked = form.querySelector('input[name="inclusion"][value="Carpet Vacuuming & Steam Clean"]').checked;
+      let estimatedText = '';
+      if (pressureCleaningChecked || unsureChecked || carpetCleaningChecked) {
+        estimatedText = 'Estimate pending further details.';
+        quoteDisplay.textContent = estimatedText;
         if (arrowImg) arrowImg.style.display = 'none';
       } else {
         const estimated = calculateQuote(property, service, size, frequency);
-        quoteDisplay.textContent = `$${estimated} / hour (estimate)`;
+        estimatedText = `$${estimated} / hour (estimate)`;
+        quoteDisplay.textContent = estimatedText;
         if (arrowImg) arrowImg.style.display = 'block';
+      }
+      if (typeof emailjs !== 'undefined') {
+        const templateParams = {
+          from_name: name || '—',
+          from_email: email || '—',
+          suburb: suburb || '—',
+          property_type: property || '—',
+          service_type: service || '—',
+          size: size || '—',
+          frequency: frequency || '—',
+          pref_days: prefDays,
+          pref_time: prefTime,
+          utilities: utilitiesText,
+          inclusions: inclusions,
+          notes: notes || '—',
+          estimated_quote: estimatedText
+        };
+        try {
+          await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+        } catch (err) {
+          console.error('EmailJS error:', err);
+        }
       }
       showStep('done');
     });
