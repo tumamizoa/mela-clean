@@ -1011,9 +1011,11 @@
           estimated_quote: estimatedText
         };
         try {
+          console.log('About to send email', templateParams);
           await emailjs.send('service_cgbxw8q', 'template_uudiq0q', templateParams);
         } catch (err) {
           console.error('EmailJS error:', err);
+          alert('Email failed: ' + (err.text || err.message || err));
         }
       }
       showStep('done');
