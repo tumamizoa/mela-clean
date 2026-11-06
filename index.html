@@ -78,7 +78,7 @@
   .nav-cta {
     background: var(--black);
     color: var(--white);
-    padding: 10px 36px 10px 20px;
+    padding: 10px 20px 10px 20px;
     border-radius: 999px;
     font-size: 0.9rem;
     text-decoration: none;
@@ -227,7 +227,7 @@
     font-size: 0.95rem;
     font-weight: 500;
     text-align: left;
-    padding: 14px 40px 14px 16px;
+    padding: 14px 16px 14px 16px;
     border: 1px solid var(--grey);
     border-radius: 12px;
     background: var(--white);
@@ -505,6 +505,10 @@
   .about-list li { padding: 16px 0; border-bottom: 1px solid var(--grey); display: flex; justify-content: space-between; gap: 20px; }
   .about-list li:first-child { border-top: 1px solid var(--grey); }
   .about-list span:first-child { color: var(--grey-text); }
+  .about-list, .service-price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 50;
+  }
   @media (max-width: 800px) { .about-inner { grid-template-columns: 1fr; gap: 40px; } }
   .cta { border-top: 1px solid var(--grey); text-align: center; padding: 12vh 6vw; }
   .cta h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.15; max-width: 640px; margin: 0 auto 40px; }
@@ -755,7 +759,7 @@
           Looking at multiple quotes?<br>
           <span class="quote-done-text" style="display: inline-block; font-weight: normal; margin-top: 4px;">
             We'll price match. Just send us the quote from another recognised local cleaning business, and we'll gladly match it.<br><br>
-            To reach out to us in the meantime, please email <a href="mailto:melaclean@pm.me" style="color: var(--pink); text-decoration: none; font-weight: 600;">melaclean@pm.me</a>.
+            To reach out to us in the meantime, please email <a href="mailto:contact@melaclean.com.au" style="color: var(--pink); text-decoration: none; font-weight: 600;">contact@melaclean.com.au</a>.
           </span>
         </p>
         <button type="button" class="btn-secondary" data-restart style="position: relative; z-index: 11;">Start a new quote</button>
@@ -806,8 +810,15 @@
     <div class="service-row" tabindex="0">
       <div class="service-name">Body corporate / facilities cleaning</div>
       <div class="service-meta">
-        <div class="service-desc">Regular cleaning of common areas for body corporate committees and facility managers.</div>
+        <div class="service-desc">Regular cleaning of common areas for body corporate committees and building/facility managers.</div>
         <div class="service-price">From $55 / hr</div>
+      </div>
+    </div>
+    <div class="service-row" tabindex="0">
+      <div class="service-name">Bin Cleaning</div>
+      <div class="service-meta">
+        <div class="service-desc">Regular or once-off cleaning of council and private commercial bins of all sizes.</div>
+        <div class="service-price">From $15 / bin</div>
       </div>
     </div>
     <div class="service-row" tabindex="0">
@@ -818,16 +829,9 @@
       </div>
     </div>
     <div class="service-row" tabindex="0">
-      <div class="service-name">Bin Cleaning</div>
-      <div class="service-meta">
-        <div class="service-desc">Regular or once-off cleaning of council bins and private commercial bins.</div>
-        <div class="service-price">From $15 / bin</div>
-      </div>
-    </div>
-    <div class="service-row" tabindex="0">
       <div class="service-name">Pressure Washing</div>
       <div class="service-meta">
-        <div class="service-desc">Once-off pressure cleaning for driveways, walls, and sides of buildings.</div>
+        <div class="service-desc">Once-off pressure cleaning of driveways, walls, and sides of buildings.</div>
         <div class="service-price">Quote on request</div>
       </div>
     </div>
@@ -838,9 +842,9 @@
     <div>
       <span class="section-label">About</span>
       <h2 class="section-heading">We are a local husband and wife team.</h2>
-      <p>We started Mela Clean from a desire to build something together. After years working for big companies, we found that they often prioritise volume over attention to detail. We saw that things could be done differently, so we decided to create a service that focused on thorough and consistent cleaning people can actually rely on.</p>
-      <p>We provide cleaning services for office tenants, building managers, and body corporate committees. We don't outsource our work, so when you deal with us, you're dealing with locals.</p>
-      <p>Flexible access arrangements (keys, lockbox, or in-person) so it works around your building or workplace.</p>
+      <p>We started Mela Clean from a desire to build something together. After years working for big companies, we found that they often prioritise volume over attention to detail. We saw that things could be done differently, so we created a service that focuses on thorough and consistent cleaning people can rely on.</p>
+      <p>We provide cleaning services for office tenants, building managers, and body corporate committees. <!--We don't outsource our work, so when you deal with us, you're dealing with locals.-->We accommodate for flexible access arrangements, including lockboxes and secure handling of keys, swipecards, and codes, so it works around your building or workplace.</p>
+      <!--<p>We keep your bookings in an online calendar that you have access to. Please contact us if you would like to change a regular booking, and we will be in contact if...</p>-->
     </div>
     <div>
       <img class="about-photo" src="gc.png" alt="Map of the Gold Coast with Central Gold Coast area" loading="lazy">
@@ -856,7 +860,8 @@
 <section class="cta" id="contact">
   <div class="section-inner">
     <h2>Ready for that<br><em>mela feel?</em></h2>
-    <a class="btn-primary" href="mailto:melaclean@pm.me">Email melaclean@pm.me</a>
+    <a class="btn-primary" href="mailto:contact@melaclean.com.au">Email us today</a><br><br>
+    Or fill in the <a href="">form at the top of the page.</a>
   </div>
 </section>
 <footer>
@@ -867,9 +872,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   (function () {
-    // Replace these with your EmailJS credentials
     if (typeof emailjs !== 'undefined') {
-      emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
+      emailjs.init({ publicKey: "bLAjeAvCPN8EKUbYY" });
     }
     const form = document.getElementById('quote-form');
     const steps = Array.from(form.querySelectorAll('.quote-step'));
@@ -1007,7 +1011,7 @@
           estimated_quote: estimatedText
         };
         try {
-          await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+          await emailjs.send('service_cgbxw8q', 'template_uudiq0q', templateParams);
         } catch (err) {
           console.error('EmailJS error:', err);
         }
